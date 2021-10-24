@@ -28,7 +28,7 @@ public class Audience implements Serializable {
 
 
     @ManyToOne
-    @JoinColumn(name="categoryid")
+    @JoinColumn(name="categoryId")
     @JsonIgnoreProperties("audiences")
     private Category category;
 
@@ -104,8 +104,6 @@ public class Audience implements Serializable {
         this.reservations = reservations;
     }
 
-
-
-  
-    
+   
+      
 }

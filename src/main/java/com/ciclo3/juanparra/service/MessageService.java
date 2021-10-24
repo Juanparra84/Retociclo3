@@ -18,8 +18,8 @@ public class MessageService {
         return messageRepository.getAll();
     }
 
-    public Optional<Message> getMessage(int id) {
-        return messageRepository.getMessage(id);
+    public Optional<Message> getMessage(int messageId) {
+        return messageRepository.getMessage(messageId);
     }
 
     public Message save(Message msg) {

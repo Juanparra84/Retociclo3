@@ -22,15 +22,15 @@ public class ReservationService {
         return reservationRepository.getReservation(reservationId);
     }
 
-    public Reservation save(Reservation rsv) {
-        if (rsv.getIdReservation() == null) {
-            return reservationRepository.save(rsv);
+    public Reservation save(Reservation rsvt) {
+        if (rsvt.getIdReservation() == null) {
+            return reservationRepository.save(rsvt);
         } else {
-            Optional<Reservation> consulta = reservationRepository.getReservation(rsv.getIdReservation());
+            Optional<Reservation> consulta = reservationRepository.getReservation(rsvt.getIdReservation());
             if (consulta.isEmpty()) {
-                return reservationRepository.save(rsv);
+                return reservationRepository.save(rsvt);
             } else {
-                return rsv;
+                return rsvt;
 
             }
         }

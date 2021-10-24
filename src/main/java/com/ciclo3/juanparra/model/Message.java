@@ -26,8 +26,8 @@ public class Message implements Serializable {
     private Audience audience;
 
     @ManyToOne
-    @JoinColumn(name = "clientid")
-    @JsonIgnoreProperties({ "messages", "reservations", "Client" })
+    @JoinColumn(name = "Idclient")
+    @JsonIgnoreProperties({ "messages", "reservations", "client" })
     private Client client;
 
     public Integer getIdMessage() {
@@ -63,5 +63,5 @@ public class Message implements Serializable {
     }
 
     
-    
+
 }

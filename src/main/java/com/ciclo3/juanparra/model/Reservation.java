@@ -1,7 +1,7 @@
 package com.ciclo3.juanparra.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,12 +29,7 @@ public class Reservation implements Serializable {
     private Audience audience;
 
     @ManyToOne
-    @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({ "reservations", "Messages" })
-    private Audience audiences;
-
-    @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({ "reservations", "messages" })
     private Client client;
 
@@ -78,14 +73,6 @@ public class Reservation implements Serializable {
 
     public void setAudience(Audience audience) {
         this.audience = audience;
-    }
-
-    public Audience getAudiences() {
-        return audiences;
-    }
-
-    public void setAudiences(Audience audiences) {
-        this.audiences = audiences;
     }
 
     public Client getClient() {
