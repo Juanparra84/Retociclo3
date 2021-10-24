@@ -2,14 +2,13 @@ package com.ciclo3.juanparra.service;
 
 import com.ciclo3.juanparra.model.Audience;
 import com.ciclo3.juanparra.repository.AudienceRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class AudienceService {
 
     @Autowired
@@ -24,10 +23,10 @@ public class AudienceService {
     }
 
     public Audience save(Audience audi) {
-        if (audi.getNumId() == null) {
+        if (audi.getId() == null) {
             return audienceRepository.save(audi);
         } else {
-            Optional<Audience> consulta = audienceRepository.getAudience(audi.getNumId());
+            Optional<Audience> consulta = audienceRepository.getAudience(audi.getId());
             if (consulta.isEmpty()) {
                 return audienceRepository.save(audi);
             } else {

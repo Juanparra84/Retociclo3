@@ -4,11 +4,11 @@ import com.ciclo3.juanparra.model.Audience;
 import com.ciclo3.juanparra.repository.crud.AudienceCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 
 @Repository
+
 public class AudienceRepository {
 
     @Autowired

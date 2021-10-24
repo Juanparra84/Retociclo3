@@ -2,8 +2,8 @@ package com.ciclo3.juanparra.web;
 
 import java.util.List;
 import java.util.Optional;
-import com.ciclo3.juanparra.model.Audience;
-import com.ciclo3.juanparra.service.AudienceService;
+import com.ciclo3.juanparra.model.Message;
+import com.ciclo3.juanparra.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,28 +17,30 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/Audience")
+@RequestMapping("/api/Message")
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE,
         RequestMethod.PUT })
 
-public class AudienceController {
-    
+public class MessageController {
+
     @Autowired
-    private AudienceService audienceService;
-        
+    private MessageService messageService;
+    
     @GetMapping("/all")
-    public List<Audience> getAudiences() {
-        return audienceService.getAll();
+    public List<Message> getMessages() {
+        return messageService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Audience> getAudience(@PathVariable("id") int id) {
-        return audienceService.getAudience(id);
+    public Optional<Message> getMessage(@PathVariable("id") int messageId) {
+        return messageService.getMessage(messageId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Audience save(@RequestBody  Audience audi) {
-        return audienceService.save(audi);
+    public Message save(@RequestBody  Message msg) {
+        return messageService.save(msg);
     }
+
+
 }

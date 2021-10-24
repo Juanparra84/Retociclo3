@@ -1,30 +1,51 @@
 package com.ciclo3.juanparra.model;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "audience")
-public class Audience {
+
+public class Audience implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer numId;
+    private Integer id;
     private String owner;
     private Integer capacity;
-    private Integer category;
     private String name;
     private String description;
 
-    public Integer getNumId() {
-        return numId;
+
+    @ManyToOne
+    @JoinColumn(name="categoryid")
+    @JsonIgnoreProperties("audiences")
+    private Category category;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "audience")
+    @JsonIgnoreProperties({"audience","client"})
+    private List<Message> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "audience")
+    @JsonIgnoreProperties({"audience","client"})
+    private List<Reservation> reservations;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setNumId(Integer numId) {
-        this.numId = numId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getOwner() {
@@ -43,14 +64,6 @@ public class Audience {
         this.capacity = capacity;
     }
 
-    public Integer getCategory() {
-        return category;
-    }
-
-    public void setCategory(Integer category) {
-        this.category = category;
-    }
-
     public String getName() {
         return name;
     }
@@ -67,4 +80,32 @@ public class Audience {
         this.description = description;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+
+
+  
+    
 }
