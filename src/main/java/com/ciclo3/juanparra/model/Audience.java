@@ -21,9 +21,9 @@ public class Audience implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String owner;
-    private Integer capacity;
     private String name;
+    private String owner;
+    private Integer capacity;    
     private String description;
 
 
