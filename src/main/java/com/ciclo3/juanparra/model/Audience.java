@@ -15,30 +15,29 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "audience")
-
+// metodo crear tabla
 public class Audience implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String name;
-    private String owner;
-    private Integer capacity;    
-    private String description;
-
+    private Integer id; // id del auditiorio
+    private String name; // nombre auditiorio
+    private String owner; // dueño del auditorio
+    private Integer capacity; // capacidad del auditorio
+    private String description; // descripcion del auditorio
 
     @ManyToOne
-    @JoinColumn(name="categoryId")
+    @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("audiences")
-    private Category category;
+    private Category category; // relacion con categoria
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "audience")
-    @JsonIgnoreProperties({"audience","client"})
-    private List<Message> messages;
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "audience")
+    @JsonIgnoreProperties({ "audience", "client" })
+    private List<Message> messages; // relacion con mensajes
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "audience")
-    @JsonIgnoreProperties({"audience","client"})
-    private List<Reservation> reservations;
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "audience")
+    @JsonIgnoreProperties({ "audience", "client" })
+    private List<Reservation> reservations; // relacion con reservaciones
 
     public Integer getId() {
         return id;
@@ -104,6 +103,4 @@ public class Audience implements Serializable {
         this.reservations = reservations;
     }
 
-   
-      
 }
