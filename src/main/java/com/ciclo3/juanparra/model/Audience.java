@@ -20,24 +20,32 @@ public class Audience implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; // id del auditiorio
-    private String name; // nombre auditiorio
-    private String owner; // dueño del auditorio
-    private Integer capacity; // capacidad del auditorio
-    private String description; // descripcion del auditorio
+    // id del auditiorio
+    private Integer id; 
+    // nombre auditiorio
+    private String name; 
+     // dueño del auditorio
+    private String owner;
+     // capacidad del auditorio
+    private Integer capacity; 
+    // descripcion del auditorio
+    private String description; 
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("audiences")
-    private Category category; // relacion con categoria
+     // relacion con categoria
+    private Category category;
 
     @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "audience")
     @JsonIgnoreProperties({ "audience", "client" })
-    private List<Message> messages; // relacion con mensajes
+     // relacion con mensajes
+    private List<Message> messages;
 
     @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "audience")
     @JsonIgnoreProperties({ "audience", "client" })
-    private List<Reservation> reservations; // relacion con reservaciones
+    // relacion con reservaciones
+    private List<Reservation> reservations; 
 
     public Integer getId() {
         return id;

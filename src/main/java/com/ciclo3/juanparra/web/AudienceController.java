@@ -27,7 +27,7 @@ public class AudienceController {
     private AudienceService audienceService;
         
     @GetMapping("/all")
-    public List<Audience> getAudiences() {
+    public List<Audience> getAudience() {
         return audienceService.getAll();
     }
 
